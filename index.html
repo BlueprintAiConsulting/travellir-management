@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+<meta name="description" content="Travellir Property Management — Premier vacation rental management across West Virginia, Boca Raton FL & Scottsdale AZ. 41 properties, AI-powered guest communications, and real-time maintenance tracking." />
 <title>Travellir — Property Management</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
@@ -27,7 +28,7 @@
     --shadow-lg: 0 12px 40px rgba(0,0,0,0.12);
     --shadow-glow: 0 0 20px rgba(201,168,76,0.08);
   }
-  html, body { height: 100%; font-family: var(--font); background: var(--bg); color: var(--text); font-size: 14px; line-height: 1.5; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11'; overflow-x: hidden; }
+  html, body { height: 100%; font-family: var(--font); background: var(--bg); color: var(--text); font-size: 14px; line-height: 1.5; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11'; overflow-x: hidden; -webkit-text-size-adjust: 100%; }
   img, svg { display: block; max-width: 100%; }
   ::selection { background: rgba(201,168,76,0.25); color: var(--navy); }
 
@@ -243,7 +244,7 @@
   ::-webkit-scrollbar-thumb:hover { background: var(--dim); }
 
   /* TOAST */
-  .toast { position: fixed; bottom: 28px; right: 28px; background: rgba(28,33,48,0.9); border: 1px solid var(--border2); border-radius: var(--radius); padding: 14px 22px; font-size: 13px; font-weight: 600; z-index: 300; opacity: 0; transform: translateY(12px) scale(0.95); transition: all 0.3s cubic-bezier(0.16,1,0.3,1); pointer-events: none; box-shadow: var(--shadow-lg); backdrop-filter: blur(16px); }
+  .toast { position: fixed; bottom: 28px; right: 28px; background: var(--navy); color: #fff; border: 1px solid var(--border2); border-radius: var(--radius); padding: 14px 22px; font-size: 13px; font-weight: 600; z-index: 300; opacity: 0; transform: translateY(12px) scale(0.95); transition: all 0.3s cubic-bezier(0.16,1,0.3,1); pointer-events: none; box-shadow: var(--shadow-lg); }
   .toast.show { opacity: 1; transform: translateY(0) scale(1); }
 
   /* Crisp focus & transitions */
@@ -284,7 +285,7 @@
     .btn-sm { padding: 7px 12px; font-size: 11px; }
 
     /* Content */
-    .page-content { padding: 16px; overflow-x: hidden; overflow-wrap: break-word; }
+    .page-content { padding: 16px; overflow-x: hidden; }
     #app { overflow-x: hidden; }
 
     /* Stats — 2-col on mobile */
@@ -351,9 +352,9 @@
     .page-content > div[style*="grid-template-columns:1fr 1fr;"] { grid-template-columns: 1fr !important; }
     .page-content > div[style*="grid-template-columns:2fr 1fr;"] { grid-template-columns: 1fr !important; }
 
-    /* Tables — horizontal scroll */
-    table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; white-space: nowrap; }
-    thead, tbody, tr { display: table; width: 100%; table-layout: fixed; }
+    /* Tables — horizontal scroll wrapper */
+    table { display: table; width: 100%; }
+    .page-content div[style*="overflow-x:auto"] { -webkit-overflow-scrolling: touch; }
 
     /* Cleaning turnover cards */
     .page-content > div[style*="border-left:4px"] { margin-bottom: 16px; }
@@ -402,6 +403,12 @@
 
     /* Channel Manager — listings table scrollable */
     .page-content table { min-width: 600px; }
+
+    /* Hostfully PMS stats — 2-col on mobile */
+    .page-content div[style*="grid-template-columns:repeat(4,1fr)"] { grid-template-columns: repeat(2, 1fr) !important; }
+
+    /* Hostfully channel connections — stack */
+    .page-content div[style*="display:flex;gap:10px;margin-bottom:16px"] { flex-direction: column !important; }
   }
 
   /* ─── SMALL MOBILE: 480px ─── */
@@ -424,7 +431,7 @@
     .login-card { padding: 24px 18px; }
     .login-card img { height: 50px !important; }
     .login-sub { font-size: 12px; margin-bottom: 24px; }
-    .form-input { padding: 11px 14px; font-size: 13px; }
+    .form-input { padding: 11px 14px; font-size: 14px; }
     .btn-primary { padding: 12px; font-size: 13px; }
 
     .detail-stats { flex-wrap: wrap; gap: 10px; }
