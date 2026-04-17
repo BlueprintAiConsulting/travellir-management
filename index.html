@@ -512,6 +512,10 @@
       <div class="nav-item" onclick="nav('channels',this)"><span class="nav-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1v2M8 13v2M1 8h2M13 8h2"/><circle cx="8" cy="8" r="3"/><path d="M3.5 3.5l1.4 1.4M11.1 11.1l1.4 1.4M3.5 12.5l1.4-1.4M11.1 4.9l1.4-1.4"/></svg></span> Channel Manager <span class="nav-badge" style="background:var(--green);">NEW</span></div>
     </div>
     <div class="nav-section">
+      <div class="nav-label">Group Living</div>
+      <div class="nav-item" onclick="nav('groupliving',this)"><span class="nav-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="14" height="10" rx="2"/><path d="M5.5 3v10M10.5 3v10"/><circle cx="3.25" cy="8" r="1" fill="currentColor" stroke="none"/><circle cx="8" cy="8" r="1" fill="currentColor" stroke="none"/><circle cx="12.75" cy="8" r="1" fill="currentColor" stroke="none"/></svg></span> Group Living <span class="nav-badge" style="background:#8b5cf6;">3</span></div>
+    </div>
+    <div class="nav-section">
       <div class="nav-label">Guest Experience</div>
       <div class="nav-item" onclick="nav('guestcomms',this)"><span class="nav-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h12v8H5l-3 3V3z" rx="2"/><circle cx="5.5" cy="7" r="0.5" fill="currentColor"/><circle cx="8" cy="7" r="0.5" fill="currentColor"/><circle cx="10.5" cy="7" r="0.5" fill="currentColor"/></svg></span> Guest Comms AI <span class="nav-badge" style="background:var(--green);">NEW</span></div>
     </div>
@@ -694,6 +698,7 @@ function renderPage() {
     reports: ['Reports', 'Revenue and performance analytics'],
     cleaning: ['Cleaning Schedules', 'Turnover tracking, crew assignments, and automations'],
     channels: ['Channel Manager', 'Multi-platform distribution — Airbnb, VRBO, Booking.com & Direct'],
+    groupliving: ['Group Living', 'Co-living properties — room-level tenant management, leases & rent tracking'],
   };
   if (currentProp) {
     document.getElementById('pageTitle').textContent = currentProp.name;
@@ -715,6 +720,7 @@ function renderPage() {
   else if (currentPage === 'reports') renderReports(p);
   else if (currentPage === 'cleaning') renderCleaning(p);
   else if (currentPage === 'channels') renderChannelManager(p);
+  else if (currentPage === 'groupliving') renderGroupLiving(p);
 }
 
 // ─── DASHBOARD ─────────────────────────────────────────────────────────
@@ -2273,6 +2279,207 @@ function renderChannelManager(p) {
         </div>
       </div>
     </div>
+  `;
+}
+
+// ─── GROUP LIVING ─────────────────────────────────────────────────────
+const GROUP_LIVING_PROPS = [
+  {
+    id:'gl1', name:'Marlinton Shared House', address:'104 Elk St, Marlinton, WV', market:'WV',
+    type:'MTR', totalRooms:5, owner:'Sarah Mitchell',
+    monthlyGross:'$4,750', expenses:'$1,200', netToOwner:'$3,550',
+    tenants:[
+      { name:'Jake Morrison', room:'Room 1 — Master', rent:1100, status:'paid', moveIn:'Jan 15, 2026', leaseEnd:'Jul 15, 2026', initials:'JM', phone:'304-555-0311', notes:'Remote worker, quiet tenant' },
+      { name:'Alyssa Chen', room:'Room 2 — Front', rent:950, status:'paid', moveIn:'Feb 1, 2026', leaseEnd:'Aug 1, 2026', initials:'AC', phone:'304-555-0322', notes:'Travel nurse, 6-month contract' },
+      { name:'Devon Harris', room:'Room 3 — Back', rent:900, status:'late', moveIn:'Mar 1, 2026', leaseEnd:'Sep 1, 2026', initials:'DH', phone:'304-555-0333', notes:'Due Apr 1 — 2 reminders sent' },
+      { name:'Maria Gonzalez', room:'Room 4 — Upstairs East', rent:900, status:'paid', moveIn:'Dec 1, 2025', leaseEnd:'Jun 1, 2026', initials:'MG', phone:'304-555-0344', notes:'' },
+      { name:'Tyler Reed', room:'Room 5 — Upstairs West', rent:900, status:'paid', moveIn:'Feb 15, 2026', leaseEnd:'Aug 15, 2026', initials:'TR', phone:'304-555-0355', notes:'New tenant, first month completed' },
+    ],
+    sharedExpenses:[
+      { label:'Electric (Appalachian Power)', amount:280, split:5 },
+      { label:'Water / Sewer', amount:120, split:5 },
+      { label:'Internet (Xfinity)', amount:90, split:5 },
+      { label:'Lawn care', amount:150, split:5 },
+      { label:'Trash pickup', amount:60, split:5 },
+    ]
+  },
+  {
+    id:'gl2', name:'Scottsdale Co-Living Villa', address:'828 Camelback Rd, Scottsdale, AZ', market:'AZ',
+    type:'MTR', totalRooms:4, owner:'Mona Homes LLC',
+    monthlyGross:'$5,200', expenses:'$1,500', netToOwner:'$3,700',
+    tenants:[
+      { name:'Brandon Cole', room:'Suite A — Pool Side', rent:1400, status:'paid', moveIn:'Jan 1, 2026', leaseEnd:'Jul 1, 2026', initials:'BC', phone:'480-555-0411', notes:'Works from home, uses pool daily' },
+      { name:'Priya Patel', room:'Suite B — Garden', rent:1300, status:'paid', moveIn:'Feb 1, 2026', leaseEnd:'Aug 1, 2026', initials:'PP', phone:'480-555-0422', notes:'Grad student at ASU' },
+      { name:'Chris Novak', room:'Room C — Upstairs', rent:1300, status:'pending', moveIn:'Mar 15, 2026', leaseEnd:'Sep 15, 2026', initials:'CN', phone:'480-555-0433', notes:'Payment processing — ACH pending' },
+      { name:'—', room:'Room D — Casita', rent:1200, status:'vacant', moveIn:'—', leaseEnd:'—', initials:'??', phone:'—', notes:'Available May 1. Listed on Furnished Finder.' },
+    ],
+    sharedExpenses:[
+      { label:'Electric (APS)', amount:420, split:4 },
+      { label:'Water / Sewer', amount:180, split:4 },
+      { label:'Internet (Cox)', amount:100, split:4 },
+      { label:'Pool maintenance', amount:200, split:4 },
+      { label:'HOA (covered by owner)', amount:350, split:0 },
+    ]
+  },
+  {
+    id:'gl3', name:'Pocahontas Group Cabin', address:'215 Mountain Trail, Marlinton, WV', market:'WV',
+    type:'LTR', totalRooms:3, owner:'Sarah Mitchell',
+    monthlyGross:'$2,550', expenses:'$650', netToOwner:'$1,900',
+    tenants:[
+      { name:'Sam Whitfield', room:'Room 1 — Downstairs', rent:850, status:'paid', moveIn:'Oct 1, 2025', leaseEnd:'Oct 1, 2026', initials:'SW', phone:'304-555-0511', notes:'12-month lease, local worker' },
+      { name:'Jordan Pike', room:'Room 2 — Loft', rent:850, status:'paid', moveIn:'Nov 1, 2025', leaseEnd:'Nov 1, 2026', initials:'JP', phone:'304-555-0522', notes:'12-month lease' },
+      { name:'Emma Torres', room:'Room 3 — Back Suite', rent:850, status:'paid', moveIn:'Jan 1, 2026', leaseEnd:'Jan 1, 2027', initials:'ET', phone:'304-555-0533', notes:'Transferred from Marlinton Shared House' },
+    ],
+    sharedExpenses:[
+      { label:'Electric (Mon Power)', amount:190, split:3 },
+      { label:'Water / Sewer', amount:85, split:3 },
+      { label:'Internet (Xfinity)', amount:75, split:3 },
+      { label:'Propane heat', amount:200, split:3 },
+    ]
+  }
+];
+
+function renderGroupLiving(p) {
+  const totalTenants = GROUP_LIVING_PROPS.reduce((s,gl) => s + gl.tenants.filter(t=>t.status!=='vacant').length, 0);
+  const totalRooms = GROUP_LIVING_PROPS.reduce((s,gl) => s + gl.totalRooms, 0);
+  const totalRev = GROUP_LIVING_PROPS.reduce((s,gl) => s + parseInt(gl.monthlyGross.replace(/[$,]/g,'')), 0);
+  const lateCount = GROUP_LIVING_PROPS.reduce((s,gl) => s + gl.tenants.filter(t=>t.status==='late').length, 0);
+  const vacantCount = GROUP_LIVING_PROPS.reduce((s,gl) => s + gl.tenants.filter(t=>t.status==='vacant').length, 0);
+
+  p.innerHTML = `
+    <!-- STATS -->
+    <div class="stat-grid" style="margin-bottom:24px;">
+      <div class="stat-card" style="border-left:3px solid #8b5cf6;">
+        <div style="display:flex;align-items:center;justify-content:space-between;">
+          <div class="stat-val" style="color:#8b5cf6">${GROUP_LIVING_PROPS.length}</div>
+          <div style="width:40px;height:40px;border-radius:12px;background:rgba(139,92,246,0.08);display:flex;align-items:center;justify-content:center;"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="#8b5cf6" stroke-width="1.5"><rect x="1" y="3" width="14" height="10" rx="2"/><path d="M5.5 3v10M10.5 3v10"/></svg></div>
+        </div>
+        <div class="stat-label">Co-Living Properties</div>
+        <div class="stat-change">${totalRooms} rooms total</div>
+      </div>
+      <div class="stat-card" style="border-left:3px solid var(--green);">
+        <div style="display:flex;align-items:center;justify-content:space-between;">
+          <div class="stat-val" style="color:var(--green)">${totalTenants}</div>
+          <div style="width:40px;height:40px;border-radius:12px;background:var(--green-soft);display:flex;align-items:center;justify-content:center;"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="var(--green)" stroke-width="1.5"><circle cx="5.5" cy="5" r="2.5"/><circle cx="10.5" cy="5" r="2.5"/><path d="M1 14c0-2.5 2-4 4.5-4s4.5 1.5 4.5 4"/><path d="M10.5 10c2.5 0 4.5 1.5 4.5 4"/></svg></div>
+        </div>
+        <div class="stat-label">Active Tenants</div>
+        <div class="stat-change">${vacantCount > 0 ? vacantCount + ' vacant room' + (vacantCount>1?'s':'') : 'Fully occupied'}</div>
+      </div>
+      <div class="stat-card" style="border-left:3px solid var(--amber);">
+        <div style="display:flex;align-items:center;justify-content:space-between;">
+          <div class="stat-val" style="color:var(--amber)">$${(totalRev/1000).toFixed(1)}k</div>
+          <div style="width:40px;height:40px;border-radius:12px;background:var(--amber-soft);display:flex;align-items:center;justify-content:center;"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="var(--amber)" stroke-width="1.5"><path d="M2 14V8h3v6"/><path d="M6.5 14V5h3v9"/><path d="M11 14V2h3v12"/></svg></div>
+        </div>
+        <div class="stat-label">Monthly Gross</div>
+        <div class="stat-change up">▲ Stable month-over-month</div>
+      </div>
+      <div class="stat-card" style="border-left:3px solid ${lateCount > 0 ? 'var(--red)' : 'var(--green)'};">
+        <div style="display:flex;align-items:center;justify-content:space-between;">
+          <div class="stat-val" style="color:${lateCount > 0 ? 'var(--red)' : 'var(--green)'}">${lateCount}</div>
+          <div style="width:40px;height:40px;border-radius:12px;background:${lateCount > 0 ? 'var(--red-soft)' : 'var(--green-soft)'};display:flex;align-items:center;justify-content:center;"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="${lateCount > 0 ? 'var(--red)' : 'var(--green)'}" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 5v4M8 11h.01"/></svg></div>
+        </div>
+        <div class="stat-label">Late Payments</div>
+        <div class="stat-change ${lateCount > 0 ? 'down' : ''}">${lateCount > 0 ? 'Requires follow-up' : 'All current'}</div>
+      </div>
+    </div>
+
+    <!-- PROPERTY CARDS -->
+    ${GROUP_LIVING_PROPS.map(gl => {
+      const occupied = gl.tenants.filter(t=>t.status!=='vacant').length;
+      const collected = gl.tenants.filter(t=>t.status==='paid').reduce((s,t)=>s+t.rent,0);
+      const expected = gl.tenants.filter(t=>t.status!=='vacant').reduce((s,t)=>s+t.rent,0);
+      const collectionRate = expected > 0 ? Math.round(collected/expected*100) : 0;
+      return `
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;margin-bottom:20px;box-shadow:var(--shadow-sm);">
+        <!-- Header -->
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+          <div>
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px;">
+              <div style="font-size:18px;font-weight:800;color:var(--navy);">${gl.name}</div>
+              <span style="font-size:9px;font-weight:700;padding:3px 10px;border-radius:20px;background:rgba(139,92,246,0.08);color:#8b5cf6;text-transform:uppercase;letter-spacing:0.5px;">${gl.type}</span>
+              <span style="font-size:9px;font-weight:700;padding:3px 10px;border-radius:20px;background:var(--surface2);color:var(--muted);">${gl.market}</span>
+            </div>
+            <div style="font-size:12px;color:var(--muted);">${gl.address} · Owner: ${gl.owner}</div>
+          </div>
+          <div style="display:flex;gap:20px;text-align:right;">
+            <div><div style="font-size:18px;font-weight:700;color:var(--green);">${gl.monthlyGross}</div><div style="font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:0.6px;font-weight:600;">Gross/mo</div></div>
+            <div><div style="font-size:18px;font-weight:700;color:var(--navy);">${gl.netToOwner}</div><div style="font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:0.6px;font-weight:600;">Net to Owner</div></div>
+          </div>
+        </div>
+
+        <!-- Occupancy & Collection Bar -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
+          <div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+              <span style="font-size:10px;color:var(--dim);font-weight:600;text-transform:uppercase;letter-spacing:1px;">Occupancy</span>
+              <span style="font-size:12px;font-weight:700;color:#8b5cf6;">${occupied}/${gl.totalRooms} rooms</span>
+            </div>
+            <div style="height:6px;background:var(--surface2);border-radius:3px;overflow:hidden;">
+              <div style="height:100%;width:${Math.round(occupied/gl.totalRooms*100)}%;background:linear-gradient(90deg,#8b5cf6,#a78bfa);border-radius:3px;transition:width 0.6s;"></div>
+            </div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+              <span style="font-size:10px;color:var(--dim);font-weight:600;text-transform:uppercase;letter-spacing:1px;">Rent Collected</span>
+              <span style="font-size:12px;font-weight:700;color:${collectionRate===100?'var(--green)':'var(--amber)'};">${collectionRate}%</span>
+            </div>
+            <div style="height:6px;background:var(--surface2);border-radius:3px;overflow:hidden;">
+              <div style="height:100%;width:${collectionRate}%;background:linear-gradient(90deg,${collectionRate===100?'var(--green),#4ade80':'var(--amber),var(--amber-light)'});border-radius:3px;transition:width 0.6s;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tenants -->
+        <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:12px;">Tenants</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;margin-bottom:20px;">
+          ${gl.tenants.map(t => {
+            const statusColors = { paid:['Paid','var(--green)','var(--green-soft)'], late:['Late','var(--red)','var(--red-soft)'], pending:['Pending','var(--amber)','var(--amber-soft)'], vacant:['Vacant','var(--muted)','var(--surface2)'] };
+            const [sLabel,sColor,sBg] = statusColors[t.status] || statusColors.vacant;
+            return `
+            <div style="background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px;transition:all 0.2s;${t.status==='vacant'?'opacity:0.6;border-style:dashed;':''}" ${t.status!=='vacant'?'onmouseover="this.style.borderColor=\'var(--border2)\';this.style.transform=\'translateY(-2px)\'" onmouseout="this.style.borderColor=\'var(--border)\';this.style.transform=\'none\'"':''}>
+              <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+                <div style="width:38px;height:38px;border-radius:50%;background:${t.status==='vacant'?'var(--surface2)':'linear-gradient(135deg,rgba(139,92,246,0.12),rgba(139,92,246,0.04))'};border:1px solid ${t.status==='vacant'?'var(--border)':'rgba(139,92,246,0.2)'};display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:${t.status==='vacant'?'var(--muted)':'#8b5cf6'};flex-shrink:0;">${t.initials}</div>
+                <div style="flex:1;min-width:0;">
+                  <div style="font-size:14px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${t.name}</div>
+                  <div style="font-size:11px;color:var(--muted);margin-top:1px;">${t.room}</div>
+                </div>
+                <span style="font-size:9px;font-weight:700;padding:3px 10px;border-radius:20px;background:${sBg};color:${sColor};text-transform:uppercase;letter-spacing:0.5px;flex-shrink:0;">${sLabel}</span>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+                <div style="background:var(--surface);border-radius:var(--radius);padding:8px 10px;">
+                  <div style="font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;">Rent</div>
+                  <div style="font-size:15px;font-weight:700;color:var(--navy);margin-top:2px;">$${t.rent.toLocaleString()}</div>
+                </div>
+                <div style="background:var(--surface);border-radius:var(--radius);padding:8px 10px;">
+                  <div style="font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;">Lease End</div>
+                  <div style="font-size:12px;font-weight:600;color:var(--text);margin-top:3px;">${t.leaseEnd}</div>
+                </div>
+              </div>
+              ${t.notes ? `<div style="font-size:11px;color:var(--dim);margin-top:10px;padding-top:10px;border-top:1px solid var(--border);line-height:1.4;">📝 ${t.notes}</div>` : ''}
+            </div>`;
+          }).join('')}
+        </div>
+
+        <!-- Shared Expenses -->
+        <div style="background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+            <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1.2px;">Shared Expenses — April 2026</div>
+            <div style="font-size:12px;font-weight:700;color:var(--navy);">$${gl.sharedExpenses.reduce((s,e)=>s+e.amount,0).toLocaleString()}/mo</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            ${gl.sharedExpenses.map(e => `
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:var(--surface);border-radius:var(--radius);">
+                <span style="font-size:12px;font-weight:500;color:var(--text);">${e.label}</span>
+                <div style="display:flex;align-items:center;gap:12px;">
+                  <span style="font-size:12px;font-weight:700;color:var(--navy);">$${e.amount}</span>
+                  ${e.split > 0 ? `<span style="font-size:10px;color:var(--dim);background:var(--surface2);padding:2px 8px;border-radius:10px;">$${Math.round(e.amount/e.split)}/person</span>` : `<span style="font-size:10px;color:#8b5cf6;background:rgba(139,92,246,0.08);padding:2px 8px;border-radius:10px;">Owner pays</span>`}
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </div>`;
+    }).join('')}
   `;
 }
 
