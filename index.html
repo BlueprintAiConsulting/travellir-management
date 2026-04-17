@@ -2285,56 +2285,56 @@ function renderChannelManager(p) {
 // ─── GROUP LIVING ─────────────────────────────────────────────────────
 const GROUP_LIVING_PROPS = [
   {
-    id:'gl1', name:'Marlinton Shared House', address:'104 Elk St, Marlinton, WV', market:'WV',
-    type:'MTR', totalRooms:5, owner:'Sarah Mitchell',
+    id:'gl1', name:'Boca Raton Group Home', address:'1440 NW 4th Ave, Boca Raton, FL', market:'FL',
+    type:'MTR', totalRooms:5, owner:'Jerell Figueroa',
     monthlyGross:'$4,750', expenses:'$1,200', netToOwner:'$3,550',
     tenants:[
-      { name:'Jake Morrison', room:'Room 1 — Master', rent:1100, status:'paid', moveIn:'Jan 15, 2026', leaseEnd:'Jul 15, 2026', initials:'JM', phone:'304-555-0311', notes:'Remote worker, quiet tenant' },
-      { name:'Alyssa Chen', room:'Room 2 — Front', rent:950, status:'paid', moveIn:'Feb 1, 2026', leaseEnd:'Aug 1, 2026', initials:'AC', phone:'304-555-0322', notes:'Travel nurse, 6-month contract' },
-      { name:'Devon Harris', room:'Room 3 — Back', rent:900, status:'late', moveIn:'Mar 1, 2026', leaseEnd:'Sep 1, 2026', initials:'DH', phone:'304-555-0333', notes:'Due Apr 1 — 2 reminders sent' },
-      { name:'Maria Gonzalez', room:'Room 4 — Upstairs East', rent:900, status:'paid', moveIn:'Dec 1, 2025', leaseEnd:'Jun 1, 2026', initials:'MG', phone:'304-555-0344', notes:'' },
-      { name:'Tyler Reed', room:'Room 5 — Upstairs West', rent:900, status:'paid', moveIn:'Feb 15, 2026', leaseEnd:'Aug 15, 2026', initials:'TR', phone:'304-555-0355', notes:'New tenant, first month completed' },
+      { name:'Jake Morrison', room:'Room 1 — Master', rent:1100, status:'paid', moveIn:'Jan 15, 2026', leaseEnd:'Jul 15, 2026', initials:'JM', phone:'561-555-0311', notes:'Remote worker, quiet tenant' },
+      { name:'Alyssa Chen', room:'Room 2 — Front', rent:950, status:'paid', moveIn:'Feb 1, 2026', leaseEnd:'Aug 1, 2026', initials:'AC', phone:'561-555-0322', notes:'Travel nurse, 6-month contract' },
+      { name:'Devon Harris', room:'Room 3 — Back', rent:900, status:'late', moveIn:'Mar 1, 2026', leaseEnd:'Sep 1, 2026', initials:'DH', phone:'561-555-0333', notes:'Due Apr 1 — 2 reminders sent' },
+      { name:'Maria Gonzalez', room:'Room 4 — Upstairs East', rent:900, status:'paid', moveIn:'Dec 1, 2025', leaseEnd:'Jun 1, 2026', initials:'MG', phone:'561-555-0344', notes:'' },
+      { name:'Tyler Reed', room:'Room 5 — Upstairs West', rent:900, status:'paid', moveIn:'Feb 15, 2026', leaseEnd:'Aug 15, 2026', initials:'TR', phone:'561-555-0355', notes:'New tenant, first month completed' },
     ],
     sharedExpenses:[
-      { label:'Electric (Appalachian Power)', amount:280, split:5 },
+      { label:'Electric (FPL)', amount:280, split:5 },
       { label:'Water / Sewer', amount:120, split:5 },
-      { label:'Internet (Xfinity)', amount:90, split:5 },
+      { label:'Internet (AT&T Fiber)', amount:90, split:5 },
       { label:'Lawn care', amount:150, split:5 },
-      { label:'Trash pickup', amount:60, split:5 },
+      { label:'Pest control', amount:60, split:5 },
     ]
   },
   {
-    id:'gl2', name:'Scottsdale Co-Living Villa', address:'828 Camelback Rd, Scottsdale, AZ', market:'AZ',
+    id:'gl2', name:'Delray Beach Co-Living Villa', address:'210 SE 2nd Ave, Delray Beach, FL', market:'FL',
     type:'MTR', totalRooms:4, owner:'Mona Homes LLC',
     monthlyGross:'$5,200', expenses:'$1,500', netToOwner:'$3,700',
     tenants:[
-      { name:'Brandon Cole', room:'Suite A — Pool Side', rent:1400, status:'paid', moveIn:'Jan 1, 2026', leaseEnd:'Jul 1, 2026', initials:'BC', phone:'480-555-0411', notes:'Works from home, uses pool daily' },
-      { name:'Priya Patel', room:'Suite B — Garden', rent:1300, status:'paid', moveIn:'Feb 1, 2026', leaseEnd:'Aug 1, 2026', initials:'PP', phone:'480-555-0422', notes:'Grad student at ASU' },
-      { name:'Chris Novak', room:'Room C — Upstairs', rent:1300, status:'pending', moveIn:'Mar 15, 2026', leaseEnd:'Sep 15, 2026', initials:'CN', phone:'480-555-0433', notes:'Payment processing — ACH pending' },
+      { name:'Brandon Cole', room:'Suite A — Pool Side', rent:1400, status:'paid', moveIn:'Jan 1, 2026', leaseEnd:'Jul 1, 2026', initials:'BC', phone:'561-555-0411', notes:'Works from home, uses pool daily' },
+      { name:'Priya Patel', room:'Suite B — Garden', rent:1300, status:'paid', moveIn:'Feb 1, 2026', leaseEnd:'Aug 1, 2026', initials:'PP', phone:'561-555-0422', notes:'Grad student at ASU' },
+      { name:'Chris Novak', room:'Room C — Upstairs', rent:1300, status:'pending', moveIn:'Mar 15, 2026', leaseEnd:'Sep 15, 2026', initials:'CN', phone:'561-555-0433', notes:'Payment processing — ACH pending' },
       { name:'—', room:'Room D — Casita', rent:1200, status:'vacant', moveIn:'—', leaseEnd:'—', initials:'??', phone:'—', notes:'Available May 1. Listed on Furnished Finder.' },
     ],
     sharedExpenses:[
-      { label:'Electric (APS)', amount:420, split:4 },
+      { label:'Electric (FPL)', amount:420, split:4 },
       { label:'Water / Sewer', amount:180, split:4 },
-      { label:'Internet (Cox)', amount:100, split:4 },
+      { label:'Internet (Xfinity)', amount:100, split:4 },
       { label:'Pool maintenance', amount:200, split:4 },
       { label:'HOA (covered by owner)', amount:350, split:0 },
     ]
   },
   {
-    id:'gl3', name:'Pocahontas Group Cabin', address:'215 Mountain Trail, Marlinton, WV', market:'WV',
-    type:'LTR', totalRooms:3, owner:'Sarah Mitchell',
+    id:'gl3', name:'Pompano Beach Shared House', address:'801 NE 14th St, Pompano Beach, FL', market:'FL',
+    type:'LTR', totalRooms:3, owner:'Jerell Figueroa',
     monthlyGross:'$2,550', expenses:'$650', netToOwner:'$1,900',
     tenants:[
-      { name:'Sam Whitfield', room:'Room 1 — Downstairs', rent:850, status:'paid', moveIn:'Oct 1, 2025', leaseEnd:'Oct 1, 2026', initials:'SW', phone:'304-555-0511', notes:'12-month lease, local worker' },
-      { name:'Jordan Pike', room:'Room 2 — Loft', rent:850, status:'paid', moveIn:'Nov 1, 2025', leaseEnd:'Nov 1, 2026', initials:'JP', phone:'304-555-0522', notes:'12-month lease' },
-      { name:'Emma Torres', room:'Room 3 — Back Suite', rent:850, status:'paid', moveIn:'Jan 1, 2026', leaseEnd:'Jan 1, 2027', initials:'ET', phone:'304-555-0533', notes:'Transferred from Marlinton Shared House' },
+      { name:'Sam Whitfield', room:'Room 1 — Downstairs', rent:850, status:'paid', moveIn:'Oct 1, 2025', leaseEnd:'Oct 1, 2026', initials:'SW', phone:'954-555-0511', notes:'12-month lease, local worker' },
+      { name:'Jordan Pike', room:'Room 2 — Loft', rent:850, status:'paid', moveIn:'Nov 1, 2025', leaseEnd:'Nov 1, 2026', initials:'JP', phone:'954-555-0522', notes:'12-month lease' },
+      { name:'Emma Torres', room:'Room 3 — Back Suite', rent:850, status:'paid', moveIn:'Jan 1, 2026', leaseEnd:'Jan 1, 2027', initials:'ET', phone:'954-555-0533', notes:'Transferred from Marlinton Shared House' },
     ],
     sharedExpenses:[
-      { label:'Electric (Mon Power)', amount:190, split:3 },
+      { label:'Electric (FPL)', amount:190, split:3 },
       { label:'Water / Sewer', amount:85, split:3 },
-      { label:'Internet (Xfinity)', amount:75, split:3 },
-      { label:'Propane heat', amount:200, split:3 },
+      { label:'Internet (AT&T Fiber)', amount:75, split:3 },
+      { label:'Lawn / landscape', amount:200, split:3 },
     ]
   }
 ];
