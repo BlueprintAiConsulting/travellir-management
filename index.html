@@ -694,8 +694,6 @@ const PROPERTIES = [
   {id:36,name:'Lake Worth Beach Cottage 2',address:'12 Lake Ave, Lake Worth Beach, FL',market:'FL',status:'ok',nextGuest:'Apr 22',revenue:'$4,300',occupancy:'64%',owner:'Jerell Figueroa',issues:[],vendors:[],booked:[6,7,22,23,24,28,29],maint:[]},
   {id:37,name:'Deerfield Beach Hideaway',address:'1925 SE 3rd Ct, Deerfield Beach, FL',market:'FL',status:'ok',nextGuest:'Apr 18',revenue:'$4,800',occupancy:'72%',owner:'Jerell Figueroa',issues:[],vendors:[],booked:[3,4,18,19,20,25,26],maint:[]},
   {id:38,name:'Sunrise Executive Suite',address:'3800 Commercial Blvd, Sunrise, FL',market:'FL',status:'ok',nextGuest:'Apr 20',revenue:'$5,300',occupancy:'79%',owner:'Mona Homes LLC',issues:[],vendors:[],booked:[5,6,7,20,21,22,27,28],maint:[]},
-  // ─── Additional AZ (Scottsdale) ───
-  {id:39,name:'Scottsdale Old Town Loft',address:'4166 N Scottsdale Rd, Scottsdale, AZ',market:'AZ',status:'ok',nextGuest:'Apr 17',revenue:'$4,800',occupancy:'70%',owner:'Anthony Reyes',issues:[],vendors:[{name:'Desert Clean Co',role:'Cleaner',phone:'480-555-0101',initials:'DC',last:'Apr 10'}],booked:[3,4,17,18,19,24,25],maint:[]},
 ];
 
 
@@ -1260,15 +1258,177 @@ function renderAllVendors(p) {
 }
 
 // ─── CALENDAR ─────────────────────────────────────────────────────────
+
+// Calendar state — persists across re-renders
+let calYear   = new Date().getFullYear();
+let calMonth  = new Date().getMonth(); // 0-indexed
+let calPropIdx = 0;
+
 function renderCalendarPage(p) {
-  p.innerHTML = `<div style="margin-bottom:18px;"><div class="section-hdr"><div class="section-title">Select a Property</div></div>
-    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;">
-      ${PROPERTIES.map(pr=>`<button class="mf-btn" onclick="openProp(${pr.id})">${pr.name}</button>`).join('')}
-    </div></div>
-    <div id="calContainer"></div>`;
-  renderCalendar(document.getElementById('calContainer'), PROPERTIES[0].booked, PROPERTIES[0].maint, PROPERTIES[0].nextGuest, PROPERTIES[0].name, PROPERTIES[0].bookings||[], PROPERTIES[0].maintDetails||[]);
+  const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  p.innerHTML = `
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px;flex-wrap:wrap;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <label style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;white-space:nowrap;">Property</label>
+        <select id="calPropSelect" onchange="calChangeProp(this.value)"
+          style="background:var(--surface);border:1px solid var(--border2);border-radius:var(--radius);padding:8px 14px;font-size:13px;font-family:var(--font);color:var(--navy);outline:none;cursor:pointer;min-width:240px;box-shadow:var(--shadow-sm);">
+          ${PROPERTIES.map((pr,i) => `<option value="${i}"${i===calPropIdx?' selected':''}>${pr.name} — ${pr.market}</option>`).join('')}
+        </select>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <button class="cal-nav-btn" onclick="calNavMonth(-1)" style="width:34px;height:34px;font-size:16px;">&#8249;</button>
+        <div id="calMonthLabel" style="font-size:16px;font-weight:700;color:var(--navy);letter-spacing:-0.3px;min-width:148px;text-align:center;">${monthNames[calMonth]} ${calYear}</div>
+        <button class="cal-nav-btn" onclick="calNavMonth(1)" style="width:34px;height:34px;font-size:16px;">&#8250;</button>
+        <button onclick="calGoToday()" style="padding:7px 14px;font-size:12px;font-weight:600;background:var(--surface);border:1px solid var(--border2);border-radius:var(--radius);color:var(--muted);cursor:pointer;font-family:var(--font);transition:all 0.15s;" onmouseover="this.style.background='var(--surface2)'" onmouseout="this.style.background='var(--surface)'">Today</button>
+      </div>
+    </div>
+    <div id="calContainer"></div>
+  `;
+  updateCalendar();
 }
 
+function calChangeProp(idx) {
+  calPropIdx = parseInt(idx);
+  updateCalendar();
+}
+
+function calNavMonth(dir) {
+  calMonth += dir;
+  if (calMonth > 11) { calMonth = 0; calYear++; }
+  if (calMonth <  0) { calMonth = 11; calYear--; }
+  updateCalendar();
+}
+
+function calGoToday() {
+  const now = new Date();
+  calYear  = now.getFullYear();
+  calMonth = now.getMonth();
+  updateCalendar();
+}
+
+function updateCalendar() {
+  const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const dayNames   = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+  // Update month label
+  const lbl = document.getElementById('calMonthLabel');
+  if (lbl) lbl.textContent = `${monthNames[calMonth]} ${calYear}`;
+
+  const pr = PROPERTIES[calPropIdx];
+  const el = document.getElementById('calContainer');
+  if (!el || !pr) return;
+
+  // Dynamic date math
+  const firstDay    = new Date(calYear, calMonth, 1).getDay();
+  const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
+  const today       = new Date();
+  const isThisMonth = today.getFullYear() === calYear && today.getMonth() === calMonth;
+  const todayDate   = today.getDate();
+
+  const bookings     = pr.bookings     || [];
+  const booked       = pr.booked       || [];
+  const maint        = pr.maint        || [];
+  const maintDetails = pr.maintDetails || [];
+
+  // Build booking ranges from metadata or fallback
+  let bookingRanges = [];
+  if (bookings.length) {
+    bookingRanges = bookings;
+  } else if (booked.length) {
+    let start = null;
+    const sorted = [...booked].sort((a,b) => a-b);
+    for (let i = 0; i < sorted.length; i++) {
+      if (!start) start = sorted[i];
+      if (!sorted.includes(sorted[i]+1)) {
+        bookingRanges.push({ start, end: sorted[i], guest: 'Guest', channel: '\u2014' });
+        start = null;
+      }
+    }
+  }
+
+  const occupancyPct = daysInMonth > 0 ? Math.round(booked.length / daysInMonth * 100) : 0;
+  const popId = 'calPop_' + calPropIdx + '_' + calMonth + '_' + calYear;
+
+  el.innerHTML = `
+    <style>
+      .cal-popover{position:fixed;z-index:9999;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;box-shadow:0 12px 40px rgba(0,0,0,0.12);min-width:260px;opacity:0;pointer-events:none;transition:opacity 0.15s,transform 0.15s;transform:translateY(4px);}
+      .cal-popover.active{opacity:1;pointer-events:auto;transform:translateY(0);}
+      .cal-popover .pop-guest{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:6px;}
+      .cal-popover .pop-channel{display:inline-block;font-size:9px;font-weight:700;padding:2px 8px;border-radius:10px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:10px;}
+      .cal-popover .pop-row{display:flex;justify-content:space-between;font-size:12px;padding:4px 0;border-bottom:1px solid var(--border);}
+      .cal-popover .pop-row:last-of-type{border:none;}
+      .cal-popover .pop-link{display:block;margin-top:10px;font-size:11px;font-weight:600;color:var(--amber);cursor:pointer;text-align:center;padding:6px;background:var(--amber-soft);border-radius:8px;}
+      .cal-popover .pop-link:hover{background:rgba(201,168,76,0.15);}
+    </style>
+    <div id="${popId}" class="cal-popover" onclick="event.stopPropagation()"></div>
+    <div class="cal-wrapper" onclick="document.getElementById('${popId}').classList.remove('active')">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px;">
+        <div>
+          <div style="font-size:14px;font-weight:700;color:var(--navy);">${pr.name}</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:2px;">${pr.address}</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-size:11px;font-weight:700;color:var(--amber);margin-bottom:4px;">${occupancyPct}% Occupied</div>
+          <div style="width:140px;height:5px;background:var(--surface2);border-radius:3px;overflow:hidden;">
+            <div style="height:100%;width:${occupancyPct}%;background:linear-gradient(90deg,var(--amber),var(--amber-light));border-radius:3px;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="cal-grid">
+        ${dayNames.map(d => `<div class="cal-day-hdr">${d}</div>`).join('')}
+        ${Array(firstDay).fill('<div class="cal-cell cal-empty"></div>').join('')}
+        ${Array.from({length: daysInMonth}, (_, i) => {
+          const d = i + 1;
+          const isBooked = booked.includes(d);
+          const isMaint  = maint.includes(d);
+          const isToday  = isThisMonth && d === todayDate;
+          const cls = isMaint ? 'cal-maint' : (isBooked ? 'cal-booked' : 'cal-avail');
+          const bk  = bookingRanges.find(b => d >= b.start && d <= b.end);
+          const md  = maintDetails.find(m => m.day === d);
+          const ch  = bk
+            ? `onclick="event.stopPropagation();showCalPopover(event,'${popId}',${JSON.stringify(bk).replace(/'/g,"&apos;")})" style="cursor:pointer"`
+            : (md ? `onclick="event.stopPropagation();showMaintPopover(event,'${popId}','${(md.label||'').replace(/'/g,"&apos;")}',${md.day})" style="cursor:pointer"` : '');
+          return `<div class="cal-cell ${cls}${isToday?' cal-today':''}" title="${monthNames[calMonth]} ${d}" ${ch}><span class="cal-num">${d}</span></div>`;
+        }).join('')}
+      </div>
+      <div class="cal-legend" style="margin-top:16px;">
+        <div class="leg"><div class="leg-box" style="background:var(--amber-soft);border:1px solid var(--amber);"></div>Booked</div>
+        <div class="leg"><div class="leg-box" style="background:var(--red-soft);border:1px solid var(--red);"></div>Maintenance</div>
+        <div class="leg"><div class="leg-box" style="background:var(--surface2);border:1px solid var(--border2);"></div>Available</div>
+        ${isThisMonth ? '<div class="leg"><div class="leg-box" style="box-shadow:inset 0 0 0 2px var(--amber);"></div>Today</div>' : ''}
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;">
+        <div class="next-booking"><div><div class="nb-label">Next Guest Arrival</div><div class="nb-val">${pr.nextGuest||'\u2014'}</div></div></div>
+        <div class="next-booking"><div><div class="nb-label">Occupancy Rate</div><div class="nb-val">${pr.occupancy||occupancyPct+'%'}</div></div></div>
+      </div>
+      ${bookingRanges.length ? `
+      <div style="margin-top:18px;padding-top:16px;border-top:1px solid var(--border);">
+        <div style="font-size:11px;font-weight:700;color:var(--dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Booking Blocks \u2014 ${monthNames[calMonth]} ${calYear}</div>
+        ${bookingRanges.map(r => {
+          const cc = ({VRBO:'#3B5998',Direct:'var(--green)',Airbnb:'#FF5A5F'})[r.channel]||'var(--amber)';
+          return `<div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;cursor:pointer;" onclick="event.stopPropagation();showCalPopover(event,'${popId}',${JSON.stringify(r).replace(/'/g,'&apos;')})" onmouseover="this.children[1].style.boxShadow='0 0 10px rgba(201,168,76,0.14)'" onmouseout="this.children[1].style.boxShadow='none'">
+            <div style="font-size:11px;color:var(--dim);width:80px;flex-shrink:0;text-align:right;font-variant-numeric:tabular-nums;">${monthNames[calMonth].slice(0,3)} ${r.start}\u2013${r.end}</div>
+            <div style="flex:1;height:36px;background:linear-gradient(90deg,rgba(201,168,76,0.1),rgba(201,168,76,0.04));border:1px solid rgba(201,168,76,0.15);border-radius:8px;display:flex;align-items:center;padding:0 12px;transition:box-shadow 0.2s;">
+              <span style="font-size:11px;font-weight:600;color:var(--amber);">${r.guest}</span>
+              <span style="margin-left:8px;font-size:9px;font-weight:700;padding:2px 6px;border-radius:8px;background:${cc}18;color:${cc};">${r.channel}</span>
+              <span style="margin-left:auto;font-size:10px;color:var(--dim);">${r.end-r.start+1} nights</span>
+            </div>
+          </div>`;
+        }).join('')}
+        ${maintDetails.length ? maintDetails.map(md => `
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+            <div style="font-size:11px;color:var(--dim);width:80px;flex-shrink:0;text-align:right;">${monthNames[calMonth].slice(0,3)} ${md.day}</div>
+            <div style="flex:1;height:36px;background:linear-gradient(90deg,rgba(229,62,62,0.08),rgba(229,62,62,0.03));border:1px solid rgba(229,62,62,0.15);border-radius:8px;display:flex;align-items:center;padding:0 12px;">
+              <span style="font-size:11px;font-weight:600;color:var(--red);">${md.label}</span>
+              <span style="margin-left:auto;font-size:9px;font-weight:700;padding:2px 6px;border-radius:8px;background:rgba(229,62,62,0.07);color:var(--red);">Maintenance</span>
+            </div>
+          </div>`).join('') : ''}
+      </div>` : `<div style="margin-top:18px;padding:24px 0;border-top:1px solid var(--border);text-align:center;color:var(--dim);font-size:13px;">No bookings recorded for ${monthNames[calMonth]} ${calYear}</div>`}
+    </div>
+  `;
+}
+
+// Legacy shim — property detail page still calls renderCalendar directly
 function renderCalendar(el, booked, maint, nextGuest, propName='', bookings=[], maintDetails=[]) {
   const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
   const offset = 3; // April 2026 starts Wednesday
