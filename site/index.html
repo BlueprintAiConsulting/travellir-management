@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travellir — Premier Rentals | Short &amp; Long-Term Stays in WV &amp; AZ</title>
+  <meta name="description" content="Travellir Premier Rentals offers beautifully curated short-term, mid-term, and long-term rental properties in West Virginia and Arizona. Book your perfect stay today.">
+  <meta name="keywords" content="vacation rentals, short-term rentals, long-term rentals, West Virginia, Arizona, Airbnb alternative, group living, luxury rentals">
+  <meta property="og:title" content="Travellir — Premier Rentals">
+  <meta property="og:description" content="Beautifully curated rental properties across West Virginia and Arizona. STR, MTR, and LTR accommodations.">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/webp" href="assets/images/logo.webp">
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header class="header" id="header">
+    <div class="container">
+      <a href="#" aria-label="Travellir Home">
+        <img src="assets/images/logo.webp" alt="Travellir Premier Rentals" class="header__logo" id="header-logo">
+      </a>
+      <nav class="header__nav" id="nav-menu">
+        <a href="#properties" class="header__link" id="nav-properties">Properties</a>
+        <a href="#experience" class="header__link" id="nav-experience">Experience</a>
+        <a href="#locations" class="header__link" id="nav-locations">Locations</a>
+        <a href="#reviews" class="header__link" id="nav-reviews">Reviews</a>
+        <a href="#contact" class="btn btn--primary header__cta" id="nav-book">Book Now</a>
+      </nav>
+      <button class="header__mobile-toggle" id="mobile-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero" id="hero">
+    <div class="hero__gradient"></div>
+    <div class="hero__grid"></div>
+    <div class="hero__particles" id="hero-particles"></div>
+
+    <div class="container">
+      <div class="hero__content">
+        <div class="hero__eyebrow">
+          <span class="hero__eyebrow-line"></span>
+          <span class="hero__eyebrow-text">Travellir Premier Rentals</span>
+        </div>
+
+        <div class="hero__badge">
+          <span class="hero__badge-dot"></span>
+          Now Booking 2026 Stays
+        </div>
+
+        <h1 class="hero__title">
+          <span class="hero__title-line">Where Every</span>
+          <span class="hero__title-accent">Stay Becomes</span>
+          <span class="hero__title-line">A Story.</span>
+        </h1>
+
+        <p class="hero__subtitle">
+          Beautifully curated properties nestled in the mountains of West Virginia 
+          and the sun-soaked landscapes of Arizona. Short stays, long stays — 
+          every stay extraordinary.
+        </p>
+
+        <div class="hero__actions">
+          <a href="#properties" class="btn btn--primary" id="hero-explore">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            Explore Properties
+          </a>
+          <a href="#contact" class="btn btn--outline" id="hero-contact">
+            Book a Stay
+          </a>
+        </div>
+
+        <div class="hero__stats">
+          <div class="hero__stat">
+            <div class="hero__stat-value" id="stat-properties">41</div>
+            <div class="hero__stat-label">Properties</div>
+          </div>
+          <div class="hero__stat">
+            <div class="hero__stat-value" id="stat-rating">4.9</div>
+            <div class="hero__stat-label">Guest Rating</div>
+          </div>
+          <div class="hero__stat">
+            <div class="hero__stat-value" id="stat-states">3</div>
+            <div class="hero__stat-label">States</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__images">
+        <div class="hero__img-wrapper">
+          <img src="assets/images/property-studio.webp" alt="Rustic studio with wood accent wall" loading="eager">
+          <span class="hero__img-label">WV Studio</span>
+        </div>
+        <div class="hero__img-wrapper">
+          <img src="assets/images/property-exterior.webp" alt="Charming ranch-style home" loading="eager">
+          <span class="hero__img-label">WV Ranch</span>
+          <span class="hero__price-badge">From $85/night</span>
+        </div>
+        <div class="hero__img-wrapper">
+          <img src="assets/images/property-pink.webp" alt="Pink-themed luxury suite" loading="eager">
+          <span class="hero__img-label">Pink Suite</span>
+        </div>
+        <div class="hero__img-wrapper">
+          <img src="assets/images/property-loft.webp" alt="Mountain view loft apartment" loading="lazy">
+          <span class="hero__img-label">Mountain Loft</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll cue -->
+    <div class="hero__scroll-cue">
+      <div class="hero__scroll-mouse">
+        <div class="hero__scroll-wheel"></div>
+      </div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ========== TRUST BAR ========== -->
+  <div class="trust-bar" id="trust-bar">
+    <div class="container">
+      <span class="trust-bar__label">Featured On</span>
+      <div class="trust-bar__divider"></div>
+      <div class="trust-bar__items">
+        <div class="trust-bar__item">
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z"/></svg>
+          Airbnb Superhost
+        </div>
+        <div class="trust-bar__divider"></div>
+        <div class="trust-bar__item">
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z"/></svg>
+          VRBO Premier Host
+        </div>
+        <div class="trust-bar__divider"></div>
+        <div class="trust-bar__item">
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27z"/></svg>
+          Direct Booking Available
+        </div>
+        <div class="trust-bar__divider"></div>
+        <div class="trust-bar__badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Verified &amp; Insured
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== PROPERTIES ========== -->
+  <section class="properties section" id="properties">
+    <div class="container">
+      <div class="properties__header reveal">
+        <p class="text-label">Our Collection</p>
+        <div class="ornament-divider">
+          <span class="ornament-divider__line"></span>
+          <span class="ornament-divider__icon">✦</span>
+          <span class="ornament-divider__line"></span>
+        </div>
+        <h2 class="heading-section">Featured Properties</h2>
+        <p class="text-body">Each space is thoughtfully designed to feel like home — whether you're here for a weekend getaway or an extended stay.</p>
+      </div>
+
+      <div class="properties__filters reveal">
+        <button class="filter-tab active" id="filter-all" data-filter="all">All Properties</button>
+        <button class="filter-tab" id="filter-str" data-filter="str">Short-Term (STR)</button>
+        <button class="filter-tab" id="filter-mtr" data-filter="mtr">Mid-Term (MTR)</button>
+        <button class="filter-tab" id="filter-ltr" data-filter="ltr">Long-Term (LTR)</button>
+        <button class="filter-tab" id="filter-wv" data-filter="wv">West Virginia</button>
+        <button class="filter-tab" id="filter-az" data-filter="az">Arizona</button>
+      </div>
+
+      <div class="properties__grid">
+        <!-- Property 1 — Featured -->
+        <article class="property-card property-card--featured reveal" id="property-pink" data-type="str mtr" data-state="wv">
+          <div class="property-card__image">
+            <img src="assets/images/property-pink.webp" alt="Pink Suite — Instagram-worthy living space" loading="eager">
+            <div class="property-card__image-overlay"></div>
+            <div class="property-card__badge">
+              <span class="property-card__badge-item property-card__badge-item--popular">⭐ Most Popular</span>
+              <span class="property-card__badge-item">STR / MTR</span>
+            </div>
+            <button class="property-card__favorite" aria-label="Save to favorites" id="fav-pink">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+          </div>
+          <div class="property-card__body">
+            <div class="property-card__location">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              West Virginia
+            </div>
+            <h3 class="property-card__title">The Pink Suite Experience</h3>
+            <p class="property-card__desc">An Instagram-worthy retreat with curated neon signs, lush greenery walls, and ultra-plush furnishings. Perfect for couples, content creators, and anyone craving a memorable, one-of-a-kind escape.</p>
+            <div class="property-card__amenities">
+              <span class="property-card__amenity">
+                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7v11a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7"/><path d="M21 7H3l2-4h14l2 4z"/><path d="M12 4v16"/></svg>
+                2 Beds
+              </span>
+              <span class="property-card__amenity">
+                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>
+                1 Bath
+              </span>
+              <span class="property-card__amenity">
+                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                4 Guests
+              </span>
+            </div>
+            <div class="property-card__footer">
+              <div class="property-card__price">$110 <span>/ night</span></div>
+              <div class="property-card__rating">
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                5.0
+              </div>
+            </div>
+            <div class="property-card__cta">
+              <a href="#contact" class="btn btn--navy" style="font-size:0.78rem; padding:12px 24px;">
+                Inquire to Book
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Property 2 -->
+        <article class="property-card reveal reveal-delay-1" id="property-studio" data-type="str mtr" data-state="wv">
+          <div class="property-card__image">
+            <img src="assets/images/property-studio.webp" alt="Rustic Studio — cozy open-concept living space">
+            <div class="property-card__image-overlay"></div>
+            <div class="property-card__badge">
+              <span class="property-card__badge-item">STR / MTR</span>
+            </div>
+            <button class="property-card__favorite" aria-label="Save to favorites" id="fav-studio">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+          </div>
+          <div class="property-card__body">
+            <div class="property-card__location">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              West Virginia
+            </div>
+            <h3 class="property-card__title">The Rustic Studio Retreat</h3>
+            <div class="property-card__amenities">
+              <span class="property-card__amenity">
+                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7v11a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7"/><path d="M21 7H3l2-4h14l2 4z"/><path d="M12 4v16"/></svg>
+                1 Bed
+              </span>
+              <span class="property-card__amenity">
+                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>
+                1 Bath
+              </span>
+              <span class="property-card__amenity">
+                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                2 Guests
+              </span>
+            </div>
+            <div class="property-card__footer">
+              <div class="property-card__price">$95 <span>/ night</span></div>
+              <div class="property-card__rating">
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                4.9
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Property 3 -->
+        <article class="property-card reveal reveal-delay-2" id="property-loft" data-type="str mtr ltr" data-state="wv">
+          <div class="property-card__image">
+            <img src="assets/images/property-loft.webp" alt="Mountain View Loft — bright panoramic space">
+            <div class="property-card__image-overlay"></div>
+            <div class="property-card__badge">
+              <span class="property-card__badge-item">STR / MTR / LTR</span>
+            </div>
+            <button class="property-card__favorite" aria-label="Save to favorites" id="fav-loft">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+          </div>
+          <div class="property-card__body">
+            <div class="property-card__location">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              West Virginia
+            </div>
+            <h3 class="property-card__title">Mountain View Downtown Loft</h3>
+            <div class="property-card__amenities">
+              <span class="property-card__amenity">
+                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7v11a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7"/><path d="M21 7H3l2-4h14l2 4z"/><path d="M12 4v16"/></svg>
+                1 Bed
+              </span>
+              <span class="property-card__amenity">
+                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>
+                1 Bath
+              </span>
+              <span class="property-card__amenity">
+                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                3 Guests
+              </span>
+            </div>
+            <div class="property-card__footer">
+              <div class="property-card__price">$85 <span>/ night</span></div>
+              <div class="property-card__rating">
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                4.8
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Property 4 -->
+        <article class="property-card reveal reveal-delay-3" id="property-rustic" data-type="str mtr ltr" data-state="wv">
+          <div class="property-card__image">
+            <img src="assets/images/property-rustic.webp" alt="Rustic WV living room with leather furniture">
+            <div class="property-card__image-overlay"></div>
+            <div class="property-card__badge">
+              <span class="property-card__badge-item">STR / LTR</span>
+            </div>
+            <button class="property-card__favorite" aria-label="Save to favorites" id="fav-rustic">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+          </div>
+          <div class="property-card__body">
+            <div class="property-card__location">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              West Virginia
+            </div>
+            <h3 class="property-card__title">The WV Rustic Ranch</h3>
+            <div class="property-card__amenities">
+              <span class="property-card__amenity">
+                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7v11a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7"/><path d="M21 7H3l2-4h14l2 4z"/><path d="M12 4v16"/></svg>
+                3 Beds
+              </span>
+              <span class="property-card__amenity">
+                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>
+                2 Baths
+              </span>
+              <span class="property-card__amenity">
+                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                6 Guests
+              </span>
+            </div>
+            <div class="property-card__footer">
+              <div class="property-card__price">$145 <span>/ night</span></div>
+              <div class="property-card__rating">
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                4.9
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Property 5 -->
+        <article class="property-card reveal reveal-delay-4" id="property-arizona" data-type="str mtr ltr" data-state="az">
+          <div class="property-card__image" style="background: linear-gradient(135deg, #1a0e00, #3d2200);">
+            <img src="assets/images/property-exterior.webp" alt="Arizona desert property" loading="lazy">
+            <div class="property-card__image-overlay"></div>
+            <div class="property-card__badge">
+              <span class="property-card__badge-item">Coming Soon</span>
+            </div>
+            <button class="property-card__favorite" aria-label="Save to favorites" id="fav-az">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+          </div>
+          <div class="property-card__body">
+            <div class="property-card__location">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Arizona
+            </div>
+            <h3 class="property-card__title">Desert Oasis — Arizona</h3>
+            <div class="property-card__amenities">
+              <span class="property-card__amenity">
+                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7v11a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7"/><path d="M21 7H3l2-4h14l2 4z"/><path d="M12 4v16"/></svg>
+                TBD
+              </span>
+              <span class="property-card__amenity">
+                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>
+                TBD
+              </span>
+              <span class="property-card__amenity">
+                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Launching Soon
+              </span>
+            </div>
+            <div class="property-card__footer">
+              <div class="property-card__price" style="font-size:1rem; color: var(--dark-40);">Inquire for pricing</div>
+              <div class="property-card__rating">
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                New
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== EXPERIENCE ========== -->
+  <section class="experience section" id="experience">
+    <div class="container">
+      <div class="experience__image-stack reveal">
+        <div class="experience__image-main">
+          <img src="assets/images/property-rustic.webp" alt="Warm rustic living room with leather furniture">
+        </div>
+        <div class="experience__image-accent">
+          <img src="assets/images/property-exterior.webp" alt="Charming WV ranch house at sunset">
+        </div>
+        <div class="experience__float-card">
+          <div class="experience__float-card-value">100%</div>
+          <div class="experience__float-card-label">Guest Satisfaction</div>
+        </div>
+        <div class="experience__award-card">
+          <div class="experience__award-card-icon">🏆</div>
+          <div class="experience__award-card-text">Premier Host</div>
+        </div>
+      </div>
+
+      <div class="experience__content">
+        <p class="text-label reveal">Why Travellir</p>
+        <div class="ornament-divider reveal">
+          <span class="ornament-divider__line"></span>
+          <span class="ornament-divider__icon">✦</span>
+          <span class="ornament-divider__line"></span>
+        </div>
+        <h2 class="heading-section reveal">More Than Just<br>A Place to Stay</h2>
+        <p class="text-body reveal">We don't just rent properties — we craft experiences. Every Travellir home is thoughtfully designed, impeccably maintained, and equipped with everything you need for the perfect stay, whether it's 3 nights or 3 months.</p>
+
+        <div class="experience__features">
+          <div class="experience__feature reveal reveal-delay-1">
+            <div class="experience__feature-icon">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div>
+              <div class="experience__feature-title">Verified &amp; Secure</div>
+              <div class="experience__feature-desc">Professionally managed with 24/7 guest support</div>
+            </div>
+          </div>
+
+          <div class="experience__feature reveal reveal-delay-2">
+            <div class="experience__feature-icon">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            </div>
+            <div>
+              <div class="experience__feature-title">Flexible Booking</div>
+              <div class="experience__feature-desc">STR, MTR, and LTR options with transparent pricing</div>
+            </div>
+          </div>
+
+          <div class="experience__feature reveal reveal-delay-3">
+            <div class="experience__feature-icon">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <div>
+              <div class="experience__feature-title">Fully Furnished</div>
+              <div class="experience__feature-desc">Move-in ready with premium linens, full kitchen &amp; Wi-Fi</div>
+            </div>
+          </div>
+
+          <div class="experience__feature reveal reveal-delay-4">
+            <div class="experience__feature-icon">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+            </div>
+            <div>
+              <div class="experience__feature-title">Best Price Direct</div>
+              <div class="experience__feature-desc">Book direct and save — no OTA markups or hidden fees</div>
+            </div>
+          </div>
+        </div>
+
+        <a href="#contact" class="btn btn--navy reveal" id="experience-cta">
+          Start Your Inquiry
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== LOCATIONS ========== -->
+  <section class="locations section" id="locations">
+    <div class="locations__glow locations__glow--1"></div>
+    <div class="locations__glow locations__glow--2"></div>
+    <div class="container">
+      <div class="locations__header">
+        <p class="text-label reveal">Where We Operate</p>
+        <div class="ornament-divider reveal">
+          <span class="ornament-divider__line" style="background: linear-gradient(90deg, transparent, rgba(201,168,76,0.5), transparent);"></span>
+          <span class="ornament-divider__icon" style="color:var(--gold-300)">✦</span>
+          <span class="ornament-divider__line" style="background: linear-gradient(90deg, transparent, rgba(201,168,76,0.5), transparent);"></span>
+        </div>
+        <h2 class="heading-section reveal">Two Destinations,<br>Endless Possibilities</h2>
+        <p class="text-body reveal">From Appalachian mountain charm to Southwest desert beauty — discover your ideal retreat.</p>
+      </div>
+
+      <div class="locations__grid">
+        <!-- WV -->
+        <div class="location-card reveal reveal-delay-1" id="location-wv">
+          <div class="location-card__image">
+            <img src="assets/images/property-exterior.webp" alt="West Virginia mountain property" loading="lazy">
+            <div class="location-card__image-overlay"></div>
+          </div>
+          <div class="location-card__icon">🏔️</div>
+          <h3 class="location-card__title">West Virginia</h3>
+          <p class="location-card__desc">
+            Escape to the mountains with our curated collection of themed properties. 
+            From cozy rustic studios to Instagram-worthy suites, 
+            each stay offers small-town charm with modern comfort.
+          </p>
+          <div class="location-card__meta">
+            <span class="location-card__meta-item">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              4+ Properties
+            </span>
+            <span class="location-card__meta-item">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              4.9 Avg Rating
+            </span>
+          </div>
+        </div>
+
+        <!-- AZ -->
+        <div class="location-card reveal reveal-delay-2" id="location-az">
+          <div class="location-card__image">
+            <img src="assets/images/property-loft.webp" alt="Arizona desert retreat" loading="lazy">
+            <div class="location-card__image-overlay"></div>
+          </div>
+          <div class="location-card__icon">🌵</div>
+          <h3 class="location-card__title">Arizona</h3>
+          <p class="location-card__desc">
+            Sun-drenched adventures await in the heart of the Southwest. 
+            Perfect for snowbirds, remote workers, or anyone craving 
+            warm weather and stunning desert landscapes.
+          </p>
+          <div class="location-card__meta">
+            <span class="location-card__meta-item">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              1+ Properties
+            </span>
+            <span class="location-card__meta-item">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Launching 2026
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== REVIEWS ========== -->
+  <section class="reviews section" id="reviews">
+    <div class="container">
+      <div class="reviews__header">
+        <p class="text-label reveal">Guest Testimonials</p>
+        <div class="ornament-divider reveal">
+          <span class="ornament-divider__line"></span>
+          <span class="ornament-divider__icon">✦</span>
+          <span class="ornament-divider__line"></span>
+        </div>
+        <h2 class="heading-section reveal">What Our Guests Say</h2>
+      </div>
+
+      <!-- Score strip -->
+      <div class="reviews__score-strip reveal">
+        <div class="reviews__score-number">4.9</div>
+        <div class="reviews__score-divider"></div>
+        <div>
+          <div class="reviews__score-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div class="reviews__score-label">Average across all platforms</div>
+        </div>
+        <div class="reviews__score-divider"></div>
+        <div class="reviews__score-detail">
+          Airbnb · VRBO<br>Direct Booking
+        </div>
+      </div>
+
+      <div class="reviews__grid">
+        <!-- Review 1 -->
+        <div class="review-card reveal reveal-delay-1">
+          <div class="review-card__stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="review-card__quote">"Absolutely loved our stay! The Pink Suite was even more stunning in person. The attention to detail is incredible — from the neon signs to the cozy furnishings. We'll definitely be back!"</p>
+          <div class="review-card__author">
+            <div class="review-card__avatar">S</div>
+            <div>
+              <div class="review-card__name">Sarah M.</div>
+              <div class="review-card__source">Airbnb Guest · West Virginia</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="review-card reveal reveal-delay-2">
+          <div class="review-card__stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="review-card__quote">"We stayed for a full month while working remotely and it was perfect. Fast Wi-Fi, quiet neighborhood, and the mountain views from the loft are unreal. Best mid-term rental experience ever."</p>
+          <div class="review-card__author">
+            <div class="review-card__avatar">J</div>
+            <div>
+              <div class="review-card__name">Jake &amp; Emily</div>
+              <div class="review-card__source">Direct Booking · West Virginia</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="review-card reveal reveal-delay-3">
+          <div class="review-card__stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="review-card__quote">"The Rustic Studio is a hidden gem. So clean, beautifully decorated, and the host was incredibly responsive. The wood accent wall and that comfy bed — we didn't want to leave!"</p>
+          <div class="review-card__author">
+            <div class="review-card__avatar">M</div>
+            <div>
+              <div class="review-card__name">Marcus T.</div>
+              <div class="review-card__source">VRBO Guest · West Virginia</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA / INQUIRY ========== -->
+  <section class="cta section" id="contact">
+    <div class="container">
+      <div class="cta__inner reveal">
+        <div class="cta__noise"></div>
+        <div class="cta__glow cta__glow--1"></div>
+        <div class="cta__glow cta__glow--2"></div>
+
+        <p class="text-label">Ready to Book?</p>
+        <h2 class="heading-section">Your Premier Stay<br>Is One Click Away</h2>
+        <p class="text-body">Whether you're planning a weekend escape, a month-long work retreat, or a long-term home base — we have the perfect property waiting for you.</p>
+
+        <!-- Inquiry Form -->
+        <div class="cta__form" id="inquiry-form">
+          <div class="cta__form-title">Send an Inquiry</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="form-name">Your Name</label>
+              <input class="form-input" type="text" id="form-name" placeholder="John Smith" autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="form-email">Email Address</label>
+              <input class="form-input" type="email" id="form-email" placeholder="you@email.com" autocomplete="email">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="form-property">Property Interest</label>
+              <select class="form-select form-input" id="form-property">
+                <option value="">Any Property</option>
+                <option value="pink">The Pink Suite</option>
+                <option value="studio">Rustic Studio Retreat</option>
+                <option value="loft">Mountain View Loft</option>
+                <option value="ranch">WV Rustic Ranch</option>
+                <option value="arizona">Arizona Desert Oasis</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="form-type">Stay Type</label>
+              <select class="form-select form-input" id="form-type">
+                <option value="">Select Type</option>
+                <option value="str">Short-Term (1–30 Days)</option>
+                <option value="mtr">Mid-Term (1–6 Months)</option>
+                <option value="ltr">Long-Term (6+ Months)</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group form-group--full form-row">
+            <div class="form-group">
+              <label class="form-label" for="form-checkin">Check-In Date</label>
+              <input class="form-input" type="date" id="form-checkin">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="form-checkout">Check-Out Date</label>
+              <input class="form-input" type="date" id="form-checkout">
+            </div>
+          </div>
+          <a href="mailto:bookings@travellir.com?subject=Property Inquiry — Travellir" class="btn btn--primary cta__form-submit" id="form-submit-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Send Inquiry
+          </a>
+        </div>
+
+        <div class="cta__actions">
+          <a href="mailto:bookings@travellir.com" class="btn btn--outline" id="cta-book">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Email Us
+          </a>
+          <a href="tel:+1234567890" class="btn btn--outline" id="cta-call">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call Us
+          </a>
+        </div>
+
+        <div class="cta__platforms">
+          <span class="cta__platforms-label">Also book via</span>
+          <span class="cta__platform-badge">🏠 Airbnb</span>
+          <span class="cta__platform-badge">🏡 VRBO</span>
+          <span class="cta__platform-badge">✉️ Direct</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <img src="assets/images/logo.webp" alt="Travellir" class="footer__logo">
+          <p class="footer__brand-desc">Beautifully curated rental properties in West Virginia and Arizona. Your home away from home — for any length of stay.</p>
+          <div style="margin-top: var(--space-lg);">
+            <a href="mailto:bookings@travellir.com" class="footer__contact-item">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              bookings@travellir.com
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer__heading">Explore</h4>
+          <nav class="footer__links">
+            <a href="#properties" class="footer__link">All Properties</a>
+            <a href="#locations" class="footer__link">West Virginia</a>
+            <a href="#locations" class="footer__link">Arizona</a>
+            <a href="#experience" class="footer__link">Why Travellir</a>
+          </nav>
+        </div>
+
+        <div>
+          <h4 class="footer__heading">Guests</h4>
+          <nav class="footer__links">
+            <a href="#contact" class="footer__link">Book a Stay</a>
+            <a href="#reviews" class="footer__link">Guest Reviews</a>
+            <a href="#" class="footer__link">FAQ</a>
+            <a href="#contact" class="footer__link">Contact Us</a>
+          </nav>
+        </div>
+
+        <div>
+          <h4 class="footer__heading">Company</h4>
+          <nav class="footer__links">
+            <a href="#experience" class="footer__link">About Us</a>
+            <a href="#" class="footer__link">News &amp; Blog</a>
+            <a href="#" class="footer__link">Privacy Policy</a>
+            <a href="#" class="footer__link">Terms of Service</a>
+          </nav>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p>&copy; 2026 Travellir Premier Rentals. All rights reserved.</p>
+        <div class="footer__socials">
+          <a href="#" class="footer__social" aria-label="Instagram" id="social-instagram">
+            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="#" class="footer__social" aria-label="Facebook" id="social-facebook">
+            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="#" class="footer__social" aria-label="Airbnb" id="social-airbnb">
+            <svg viewBox="0 0 24 24"><path d="M12 3L2 12h3v9h6v-6h2v6h6v-9h3L12 3z" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
