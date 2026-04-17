@@ -368,10 +368,15 @@ ul, ol { list-style: none; }
   height: 46px;
   width: auto;
   transition: height var(--duration-normal) var(--ease-out), filter var(--duration-normal);
-  filter: brightness(1.05);
+  mix-blend-mode: luminosity;
+  filter: brightness(1.2) contrast(1.05) drop-shadow(0 1px 8px rgba(201,168,76,0.18));
 }
 
-.header--scrolled .header__logo { height: 38px; }
+.header--scrolled .header__logo {
+  height: 38px;
+  mix-blend-mode: normal;
+  filter: brightness(1.08) drop-shadow(0 1px 6px rgba(0,0,0,0.3));
+}
 
 .header__nav {
   display: flex;
