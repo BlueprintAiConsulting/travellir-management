@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Travellir — Premier Rentals | Short &amp; Long-Term Stays in WV &amp; AZ</title>
-  <meta name="description" content="Travellir Premier Rentals offers beautifully curated short-term, mid-term, and long-term rental properties in West Virginia and Arizona. Book your perfect stay today.">
-  <meta name="keywords" content="vacation rentals, short-term rentals, long-term rentals, West Virginia, Arizona, Airbnb alternative, group living, luxury rentals">
+  <title>Travellir — Premier Rentals | Short &amp; Long-Term Stays in FL, WV &amp; AZ</title>
+  <meta name="description" content="Travellir Premier Rentals offers beautifully curated short-term, mid-term, and long-term rental properties across South Florida, West Virginia, and Arizona. Book your perfect stay today.">
+  <meta name="keywords" content="vacation rentals, short-term rentals, long-term rentals, South Florida, Boca Raton, Delray Beach, West Virginia, Arizona, Airbnb alternative, group living, luxury rentals">
   <meta property="og:title" content="Travellir — Premier Rentals">
-  <meta property="og:description" content="Beautifully curated rental properties across West Virginia and Arizona. STR, MTR, and LTR accommodations.">
+  <meta property="og:description" content="41 beautifully curated rental properties across South Florida, West Virginia, and Arizona. STR, MTR, and LTR accommodations.">
   <meta property="og:type" content="website">
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/webp" href="assets/images/logo.webp">
@@ -60,9 +60,9 @@
         </h1>
 
         <p class="hero__subtitle">
-          Beautifully curated properties nestled in the mountains of West Virginia 
-          and the sun-soaked landscapes of Arizona. Short stays, long stays — 
-          every stay extraordinary.
+          41 beautifully curated properties across the beaches of South Florida, 
+          the mountains of West Virginia, and the deserts of Arizona. 
+          Short stays, long stays — every stay extraordinary.
         </p>
 
         <div class="hero__actions">
@@ -169,6 +169,7 @@
         <button class="filter-tab" id="filter-str" data-filter="str">Short-Term (STR)</button>
         <button class="filter-tab" id="filter-mtr" data-filter="mtr">Mid-Term (MTR)</button>
         <button class="filter-tab" id="filter-ltr" data-filter="ltr">Long-Term (LTR)</button>
+        <button class="filter-tab" id="filter-fl" data-filter="fl">South Florida</button>
         <button class="filter-tab" id="filter-wv" data-filter="wv">West Virginia</button>
         <button class="filter-tab" id="filter-az" data-filter="az">Arizona</button>
       </div>
@@ -487,11 +488,36 @@
           <span class="ornament-divider__icon" style="color:var(--gold-300)">✦</span>
           <span class="ornament-divider__line" style="background: linear-gradient(90deg, transparent, rgba(201,168,76,0.5), transparent);"></span>
         </div>
-        <h2 class="heading-section reveal">Two Destinations,<br>Endless Possibilities</h2>
-        <p class="text-body reveal">From Appalachian mountain charm to Southwest desert beauty — discover your ideal retreat.</p>
+        <h2 class="heading-section reveal">Three Destinations,<br>Endless Possibilities</h2>
+        <p class="text-body reveal">From South Florida's sun-drenched coastline to Appalachian mountain charm and Southwest desert beauty — discover your ideal retreat.</p>
       </div>
 
       <div class="locations__grid">
+        <!-- FL -->
+        <div class="location-card reveal" id="location-fl">
+          <div class="location-card__image">
+            <img src="assets/images/property-pink.webp" alt="South Florida beachside property" loading="lazy">
+            <div class="location-card__image-overlay"></div>
+          </div>
+          <div class="location-card__icon">🌴</div>
+          <h3 class="location-card__title">South Florida</h3>
+          <p class="location-card__desc">
+            Our largest market — 34 premium properties spanning Boca Raton, 
+            Delray Beach, Fort Lauderdale, West Palm Beach, and more. 
+            Sun, sand, and style year-round.
+          </p>
+          <div class="location-card__meta">
+            <span class="location-card__meta-item">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              34 Properties
+            </span>
+            <span class="location-card__meta-item">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              4.9 Avg Rating
+            </span>
+          </div>
+        </div>
+
         <!-- WV -->
         <div class="location-card reveal reveal-delay-1" id="location-wv">
           <div class="location-card__image">
@@ -729,7 +755,7 @@
       <div class="footer__grid">
         <div>
           <img src="assets/images/logo.webp" alt="Travellir" class="footer__logo">
-          <p class="footer__brand-desc">Beautifully curated rental properties in West Virginia and Arizona. Your home away from home — for any length of stay.</p>
+          <p class="footer__brand-desc">41 beautifully curated rental properties across South Florida, West Virginia, and Arizona. Your home away from home — for any length of stay.</p>
           <div style="margin-top: var(--space-lg);">
             <a href="mailto:bookings@travellir.com" class="footer__contact-item">
               <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
@@ -742,6 +768,7 @@
           <h4 class="footer__heading">Explore</h4>
           <nav class="footer__links">
             <a href="#properties" class="footer__link">All Properties</a>
+            <a href="#locations" class="footer__link">South Florida</a>
             <a href="#locations" class="footer__link">West Virginia</a>
             <a href="#locations" class="footer__link">Arizona</a>
             <a href="#experience" class="footer__link">Why Travellir</a>
