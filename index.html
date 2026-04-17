@@ -868,6 +868,28 @@ function renderDashboard(p) {
       }).join('')}
     </div>` : ''}
 
+    <!-- VACANT ROOMS ALERT -->
+    ${(() => {
+      const vacants = GROUP_LIVING_PROPS.flatMap(gl =>
+        gl.tenants.filter(t => t.status === 'vacant').map(t => ({ ...t, propName: gl.name, propId: gl.id }))
+      );
+      if (!vacants.length) return '';
+      return `
+      <div class="alerts-section" style="margin-bottom:16px;border-left:3px solid var(--blue);">
+        <div class="section-hdr"><div class="section-title" style="color:var(--blue);">🏠 Vacant Rooms — Revenue Opportunity</div><div style="font-size:11px;color:var(--muted);">${vacants.length} room${vacants.length>1?'s':''} need${vacants.length===1?'s':''} a tenant</div></div>
+        ${vacants.map(t => `
+          <div class="alert-row">
+            <div class="alert-dot" style="background:var(--blue);"></div>
+            <div>
+              <div class="alert-text">${t.room}</div>
+              <div class="alert-prop">${t.propName} · ${t.notes || 'Vacant — no listing active'}</div>
+            </div>
+            <span style="font-size:9px;font-weight:700;padding:3px 10px;border-radius:20px;background:var(--blue-soft);color:var(--blue);text-transform:uppercase;letter-spacing:0.5px;white-space:nowrap;">Vacant</span>
+            <button class="btn-sm btn-amber" onclick="showModal('addTenant','${t.propId}')" style="font-size:11px;padding:5px 10px;">+ Add Tenant</button>
+          </div>`).join('')}
+      </div>`;
+    })()}
+
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
       <div>
         <div class="section-hdr"><div class="section-title">Properties by Market</div></div>
@@ -2057,7 +2079,7 @@ function renderReports(p) {
 }
 
 // ─── MODALS ────────────────────────────────────────────────────────────
-function showModal(type) {
+function showModal(type, extra) {
   modalType = type;
   const box = document.getElementById('modalBox');
   const propName = currentProp ? currentProp.name : 'Portfolio';
@@ -2107,6 +2129,54 @@ function showModal(type) {
       <div class="modal-footer">
         <button class="btn-cancel" onclick="closeModal()">Cancel</button>
         <button class="btn-primary" style="width:auto;padding:8px 20px;margin:0;" onclick="saveIssue()">Create Issue</button>
+      </div>
+    `;
+  } else if (type === 'addTenant') {
+    const glProp = GROUP_LIVING_PROPS.find(g => g.id === extra);
+    const propLabel = glProp ? glProp.name : 'Group Living Property';
+    box.innerHTML = `
+      <div class="modal-title">Add New Tenant — ${propLabel}</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div class="modal-form-group"><label class="modal-label">Full Name</label>
+          <input class="modal-input" id="tName" placeholder="e.g. Jordan Smith" />
+        </div>
+        <div class="modal-form-group"><label class="modal-label">Phone</label>
+          <input class="modal-input" id="tPhone" placeholder="561-555-0100" />
+        </div>
+      </div>
+      <div class="modal-form-group"><label class="modal-label">Room / Unit</label>
+        <input class="modal-input" id="tRoom" placeholder="e.g. Room 3 — Back Suite" />
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;">
+        <div class="modal-form-group"><label class="modal-label">Monthly Rent ($)</label>
+          <input class="modal-input" id="tRent" type="number" placeholder="950" />
+        </div>
+        <div class="modal-form-group"><label class="modal-label">Move-In Date</label>
+          <input class="modal-input" id="tMoveIn" placeholder="May 1, 2026" />
+        </div>
+        <div class="modal-form-group"><label class="modal-label">Lease End Date</label>
+          <input class="modal-input" id="tLeaseEnd" placeholder="Nov 1, 2026" />
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div class="modal-form-group"><label class="modal-label">Lease Type</label>
+          <select class="modal-select" id="tType">
+            <option>MTR</option><option>LTR</option><option>STR</option>
+          </select>
+        </div>
+        <div class="modal-form-group"><label class="modal-label">Payment Status</label>
+          <select class="modal-select" id="tStatus">
+            <option value="pending">Pending</option>
+            <option value="paid">Paid</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-form-group"><label class="modal-label">Notes (optional)</label>
+        <textarea class="modal-textarea" id="tNotes" placeholder="e.g. Remote worker, quiet tenant"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+        <button class="btn-primary" style="width:auto;padding:8px 20px;margin:0;" onclick="saveTenant('${extra}')">Add Tenant</button>
       </div>
     `;
   } else {
@@ -2173,6 +2243,30 @@ function closeModal(e) {
   if (!e || e.target === document.getElementById('modal')) {
     document.getElementById('modal').style.display = 'none';
   }
+}
+
+function saveTenant(glId) {
+  const name = document.getElementById('tName').value.trim();
+  const phone = document.getElementById('tPhone').value.trim() || '—';
+  const room = document.getElementById('tRoom').value.trim();
+  const rent = parseInt(document.getElementById('tRent').value) || 0;
+  const moveIn = document.getElementById('tMoveIn').value.trim() || 'TBD';
+  const leaseEnd = document.getElementById('tLeaseEnd').value.trim() || 'TBD';
+  const status = document.getElementById('tStatus').value;
+  const notes = document.getElementById('tNotes').value.trim();
+  if (!name || !room) { showToast('Name and room are required'); return; }
+  const glProp = GROUP_LIVING_PROPS.find(g => g.id === glId);
+  if (!glProp) return;
+  const initials = name.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);
+  const newTenant = { name, room, rent, status, moveIn, leaseEnd, initials, phone, notes };
+  // Replace first vacant slot if exists, otherwise push
+  const vacantIdx = glProp.tenants.findIndex(t => t.status === 'vacant');
+  if (vacantIdx !== -1) { glProp.tenants[vacantIdx] = newTenant; }
+  else { glProp.tenants.push(newTenant); glProp.totalRooms = glProp.tenants.length; }
+  closeModal();
+  showToast(`${name} added to ${glProp.name} ✓`);
+  currentPage = 'groupliving';
+  renderPage();
 }
 
 // ─── TOAST ────────────────────────────────────────────────────────────
@@ -2502,8 +2596,11 @@ function renderGroupLiving(p) {
           </div>
         </div>
 
-        <!-- Tenants -->
         <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:12px;">Tenants</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+          <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1.2px;">Tenants</div>
+          <button class="btn-sm btn-amber" onclick="showModal('addTenant','${gl.id}')" style="font-size:11px;padding:5px 12px;">+ Add Tenant</button>
+        </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;margin-bottom:20px;">
           ${gl.tenants.map(t => {
             const statusColors = { paid:['Paid','var(--green)','var(--green-soft)'], late:['Late','var(--red)','var(--red-soft)'], pending:['Pending','var(--amber)','var(--amber-soft)'], vacant:['Vacant','var(--muted)','var(--surface2)'] };
